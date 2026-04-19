@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan: Kandias & Neng Zazila</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#1a2a40',
+                            900: '#0b192c',
+                            950: '#060f1c'
+                        },
+                        gold: {
+                            300: '#fde08b',
+                            400: '#f4c553',
+                            500: '#d4af37', // Classic Gold
+                            600: '#b5952f'
+                        }
+                    },
+                    fontFamily: {
+                        'serif': ['"Playfair Display"', 'serif'],
+                        'sans': ['"Montserrat"', 'sans-serif'],
+                        'cursive': ['"Great Vibes"', 'cursive']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            background-color: #0b192c;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+        
+        .bg-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(to right, #fde08b, #d4af37, #fde08b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-border {
+            border: 2px solid #d4af37;
+        }
+
+        .cover-overlay {
+            background: linear-gradient(to bottom, rgba(11, 25, 44, 0.4), rgba(11, 25, 44, 1));
+        }
+
+        /* Hide scrollbar for clean look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b192c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d4af37;
+            border-radius: 4px;
+        }
+
+        /* Toast Animation */
+        @keyframes slideUpFade {
+            0% { opacity: 0; transform: translate(-50%, 20px); }
+            100% { opacity: 1; transform: translate(-50%, 0); }
+        }
+        .toast-enter {
+            animation: slideUpFade 0.3s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased bg-navy-900 selection:bg-gold-500 selection:text-navy-900">
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-gold-500 text-navy-900 px-6 py-3 rounded-full font-semibold shadow-lg shadow-gold-500/20 z-50 hidden">
+        <i class="fa-solid fa-check-circle mr-2"></i> Nomor Rekening Tersalin!
+    </div>
+
+    <!-- COVER / WELCOME SCREEN -->
+    <div id="cover" class="fixed inset-0 z-40 flex flex-col items-center justify-center bg-navy-900 transition-transform duration-1000 ease-in-out">
+        <div class="absolute inset-0 z-0">
+            <!-- Dummy Cover Image -->
+            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Wedding Cover" class="w-full h-full object-cover opacity-30">
+            <div class="absolute inset-0 cover-overlay"></div>
+        </div>
+        
+        <div class="relative z-10 text-center px-6 flex flex-col items-center w-full max-w-md mx-auto">
+            <p class="text-gold-400 tracking-[0.2em] text-sm uppercase mb-6 font-semibold">The Wedding Of</p>
+            <h1 class="font-cursive text-5xl sm:text-6xl text-white mb-4 drop-shadow-md">Kandias <br><span class="text-3xl sm:text-4xl text-gold-500">&</span><br> Neng Zazila</h1>
+            
+            <div class="w-16 h-[1px] bg-gold-500 my-6"></div>
+            
+            <p class="text-gray-300 font-serif italic text-lg mb-10">Sabtu, 9 Mei 2026</p>
+            
+            <p class="text-sm text-gray-400 mb-4">Kepada Yth. Bapak/Ibu/Saudara/i</p>
+            <div class="font-serif text-xl text-gold-400 mb-8 border-b border-gold-500/30 pb-2 px-8">Tamu Undangan</div>
+            
+            <button onclick="openInvitation()" class="group relative px-8 py-3 bg-transparent gold-border text-gold-400 rounded-full font-medium hover:bg-gold-500 hover:text-navy-900 transition-all duration-300 overflow-hidden">
+                <span class="relative z-10 flex items-center gap-2">
+                    <i class="fa-solid fa-envelope-open-text"></i> Buka Undangan
+                </span>
+            </button>
+        </div>
+    </div>
+
+    <!-- MAIN INVITATION CONTENT -->
+    <main id="main-content" class="hidden opacity-0 transition-opacity duration-1000 bg-pattern min-h-screen">
+        
+        <!-- Mobile Wrapper (Looks elegant on both mobile and desktop) -->
+        <div class="max-w-xl mx-auto bg-navy-900/90 backdrop-blur-sm min-h-screen shadow-2xl relative">
+            
+            <!-- SECTION: INTRO & SURAH -->
+            <section class="py-20 px-6 text-center border-b border-gold-500/20" data-aos="fade-up" data-aos-duration="1000">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Bismillah.svg" alt="Bismillah" class="w-48 mx-auto mb-8 invert opacity-80" style="filter: brightness(0) saturate(100%) invert(86%) sepia(21%) saturate(928%) hue-rotate(352deg) brightness(97%) contrast(93%);"> <!-- Gold bismillah filter approximation -->
+                
+                <p class="font-serif text-gray-300 leading-relaxed mb-6 text-sm">
+                    "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berfikir."
+                </p>
+                <p class="font-bold text-gold-500 tracking-widest text-xs">(QS. Ar-Rum: 21)</p>
+            </section>
+
+            <!-- SECTION: MEMPELAI -->
+            <section class="py-20 px-6 text-center" data-aos="fade-up" data-aos-duration="1000">
+                <p class="font-serif text-gray-300 mb-10 text-sm">Assalamu'alaikum Warahmatullahi Wabarakatuh<br><br>Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan pernikahan putra-putri kami:</p>
+                
+                <!-- Groom -->
+                <div class="mb-12 flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-32 h-32 rounded-full gold-border p-1 mb-6 relative">
+                        <!-- Dummy Image Groom -->
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Groom" class="w-full h-full rounded-full object-cover">
+                    </div>
+                    <h2 class="font-serif text-2xl text-gold-400 font-bold mb-2">Abdur Rohman Kandias</h2>
+                    <p class="text-sm text-gray-400 mb-1">Putra dari</p>
+                    <p class="font-serif text-gray-200">Bapak K Kholid Abdul Rasyid<br>& Ibu</p>
+                </div>
+
+                <div class="text-4xl text-gold-500 font-cursive mb-12" data-aos="zoom-in">
+                    &
+                </div>
+
+                <!-- Bride -->
+                <div class="mb-12 flex flex-col items-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-32 h-32 rounded-full gold-border p-1 mb-6 relative">
+                        <!-- Dummy Image Bride -->
+                        <img src="https://images.unsplash.com/photo-1584282361668-cb54cbf82aa0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Bride" class="w-full h-full rounded-full object-cover">
+                    </div>
+                    <h2 class="font-serif text-2xl text-gold-400 font-bold mb-2">Neng Zazilatus Sarifah</h2>
+                    <p class="text-sm text-gray-400 mb-1">Putri dari</p>
+                    <p class="font-serif text-gray-200">Bapak Agus Budi Kuswara<br>& Ibu</p>
+                </div>
+            </section>
+
+            <!-- SECTION: EVENT DETAILS -->
+            <section class="py-20 px-6 text-center bg-navy-950/50 border-y border-gold-500/20 relative" data-aos="fade-up" data-aos-duration="1000">
+                <h2 class="font-cursive text-4xl text-white mb-10 gold-gradient-text">Rangkaian Acara</h2>
+                
+                <!-- Akad Card -->
+                <div class="bg-navy-800/50 gold-border rounded-2xl p-8 mb-8 backdrop-blur-sm relative overflow-hidden group hover:bg-navy-800 transition-colors" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-gold-500 rounded-b-full"></div>
+                    <i class="fa-solid fa-ring text-3xl text-gold-400 mb-4"></i>
+                    <h3 class="font-serif text-2xl text-white mb-4 tracking-wider">Akad Nikah</h3>
+                    <div class="text-gray-300 space-y-2 mb-6">
+                        <p class="font-bold text-gold-300"><i class="fa-regular fa-calendar mr-2"></i>Sabtu, 9 Mei 2026</p>
+                        <p><i class="fa-regular fa-clock mr-2"></i>08.00 WIB - Selesai</p>
+                    </div>
+                    <div class="text-sm text-gray-400 border-t border-gold-500/20 pt-4 mt-4">
+                        <p class="font-semibold text-gray-200 mb-1">Lokasi Acara</p>
+                        <p>Petahunan RT003/002</p>
+                    </div>
+                </div>
+
+                <!-- Resepsi Card -->
+                <div class="bg-navy-800/50 gold-border rounded-2xl p-8 mb-8 backdrop-blur-sm relative overflow-hidden group hover:bg-navy-800 transition-colors" data-aos="fade-up" data-aos-delay="200">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-gold-500 rounded-b-full"></div>
+                    <i class="fa-solid fa-champagne-glasses text-3xl text-gold-400 mb-4"></i>
+                    <h3 class="font-serif text-2xl text-white mb-4 tracking-wider">Resepsi (Pria)</h3>
+                    <div class="text-gray-300 space-y-2 mb-6">
+                        <p class="font-bold text-gold-300"><i class="fa-regular fa-calendar mr-2"></i>Kamis, 8 Mei 2026</p>
+                        <p><i class="fa-regular fa-clock mr-2"></i>10.00 WIB - Selesai</p>
+                    </div>
+                    <div class="text-sm text-gray-400 border-t border-gold-500/20 pt-4 mt-4">
+                        <p class="font-semibold text-gray-200 mb-1">Lokasi Acara</p>
+                        <p>Petahunan RT003/002</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: WEDDING GIFT / AMPLOP DIGITAL -->
+            <section class="py-20 px-6 text-center" data-aos="fade-up" data-aos-duration="1000">
+                <h2 class="font-cursive text-4xl text-white mb-6 gold-gradient-text">Wedding Gift</h2>
+                <p class="text-sm text-gray-300 mb-10 font-serif">
+                    Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun, jika Anda hendak memberikan tanda kasih, Anda dapat memberikannya melalui fitur amplop digital di bawah ini:
+                </p>
+
+                <div class="bg-gradient-to-br from-navy-800 to-navy-950 p-6 rounded-2xl border border-gold-500/30 shadow-xl" data-aos="zoom-in">
+                    <img src="https://upload.wikimedia.org/wikipedia/id/thumb/5/55/BNI_logo.svg/1200px-BNI_logo.svg.png" alt="BNI" class="h-8 mx-auto mb-6 bg-white/90 p-1 rounded">
+                    
+                    <p class="text-gray-400 text-sm mb-1">Nomor Rekening</p>
+                    <p id="rek-bni" class="text-2xl font-bold text-gold-400 tracking-wider mb-2 font-serif">2020837789</p>
+                    <p class="text-gray-300 text-sm mb-6">a.n Abdur Rohman Kandias</p>
+                    
+                    <button onclick="copyRekening('2020837789')" class="w-full py-3 bg-gold-500 text-navy-900 font-semibold rounded-lg hover:bg-gold-400 transition-colors shadow-lg shadow-gold-500/20">
+                        <i class="fa-regular fa-copy mr-2"></i> Salin Nomor Rekening
+                    </button>
+                </div>
+            </section>
+
+            <!-- FOOTER -->
+            <footer class="py-12 px-6 text-center border-t border-gold-500/20 bg-navy-950">
+                <h2 class="font-cursive text-3xl text-white mb-4">Terima Kasih</h2>
+                <p class="text-xs text-gray-400 font-sans mb-8">
+                    Merupakan suatu kebahagiaan dan kehormatan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.
+                </p>
+                <div class="flex flex-col items-center justify-center space-y-2">
+                    <p class="text-gold-500 font-serif">Kandias & Neng Zazila</p>
+                </div>
+            </footer>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Animations
+        AOS.init({
+            once: true,
+            offset: 50,
+        });
+
+        // Open Invitation Logic
+        function openInvitation() {
+            const cover = document.getElementById('cover');
+            const mainContent = document.getElementById('main-content');
+            
+            // Slide up animation for cover
+            cover.style.transform = 'translateY(-100%)';
+            
+            // Show main content
+            setTimeout(() => {
+                mainContent.classList.remove('hidden');
+                // Trigger reflow
+                void mainContent.offsetWidth;
+                mainContent.classList.remove('opacity-0');
+                
+                // Allow body scroll
+                document.body.style.overflow = 'auto';
+            }, 500); // Wait for transition to mostly finish
+        }
+
+        // Copy Rekening Logic
+        function copyRekening(text) {
+            // Using modern Clipboard API
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showToast();
+                }).catch(err => {
+                    fallbackCopyTextToClipboard(text);
+                });
+            } else {
+                fallbackCopyTextToClipboard(text);
+            }
+        }
+
+        // Fallback for older browsers or insecure contexts (like some iframes)
+        function fallbackCopyTextToClipboard(text) {
+            var textArea = document.createElement("textarea");
+            textArea.value = text;
+            
+            // Avoid scrolling to bottom
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.position = "fixed";
+
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+
+            try {
+                var successful = document.execCommand('copy');
+                if(successful) {
+                    showToast();
+                }
+            } catch (err) {
+                console.error('Fallback: Oops, unable to copy', err);
+            }
+
+            document.body.removeChild(textArea);
+        }
+
+        // Custom Toast Notification
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.remove('hidden');
+            toast.classList.add('toast-enter');
+            
+            setTimeout(() => {
+                toast.classList.remove('toast-enter');
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        // Prevent scrolling before invitation is opened
+        window.onload = function() {
+            document.body.style.overflow = 'hidden';
+            // Scroll to top just in case
+            window.scrollTo(0, 0);
+        };
+    </script>
+</body>
+</html>
